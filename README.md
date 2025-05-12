@@ -14,11 +14,11 @@ Ensure the following are installed on your machine:
 
 ### 1. Clone the Repository
 
-git clone (https://github.com/OU-SES/BDS)
+git clone https://github.com/OU-SES/BDS
 
 cd BFSserver/BFSserver
 
-### 2-1. Build the Application through MVN
+### 2A. Build the Application through MVN
 
 ```
 mvn clean install
@@ -28,7 +28,7 @@ This will download all dependencies and build the `.jar` file in the `target/` d
 
 If you're using IntelliJ IDEA, follow these steps to open and run the project:
 
-### 2-2. Build the Application with IntelliJ IDEA
+### 2B. Build and Run with IntelliJ IDEA
 
 1. Open IntelliJ IDEA.
 2. Click File > Open...
@@ -36,8 +36,9 @@ If you're using IntelliJ IDEA, follow these steps to open and run the project:
 4. IntelliJ will automatically detect it's a Maven project and import all dependencies.
 5. Once indexing is complete, locate the main class with the `@SpringBootApplication` annotation (usually in `src/main/java/...`) and right-click it.
 6. Click Run to start the server.
+Note: If you're using IntelliJ IDEA, you do not need to run `mvn clean install` separately — the IDE will handle build and dependency resolution automatically.
 
-### 3. Run the Application (if you build the application with 2-1)
+### 3. Run the Application (if you build the application with 2B)
 
 mvn spring-boot:run
 
@@ -67,16 +68,16 @@ spring.datasource.password=your_password
 ## Initial broker setup
 
 1. Open BfSserverApplication.java
-2. Create Object instance into the array of Object[][] data which is inside of the init() method.
+2. Add broker entries to the `Object[][] data` array located in the `init()` method.
 3. The structure of Broker Object data is {1.Broker Name, 2.IP address of the Broker, 3. Port, 4. The number of connected clients, 5. fix quality, 6. number of satellite, 7. HDOP, 8. altitude, 9. height, 10. location(optional)}
 
-```
+```java
 Object[][] data = {
 	      {"Broker1", "127.0.0.1", "1", 0, 4, 1.5f, 100.0f, -20.0f, 40.757271, -73.990000},
 	      {"Broker2", "127.0.0.2", "2", 1, 4, 1.5f, 100.0f, -20.0f, 40.757218, -73.990007}
 	  };
 ```
 
-4. Add Broker Object data into the place as much as you need for the test. Please check the longitude and latitude value of the broker, the BFSserver will send a broker with minimum distance with the client in default.
-If Broker Objects are added successfully, user will see the following screen.
+4. Add as many broker entries as needed for testing. Please ensure that longitude and latitude values are accurate. The server will automatically select the broker closest to the client.
+If Broker Objects are added successfully, you will see the following screen:
 ![Architecture Diagram](https://github.com/OU-SES/BDS/blob/main/running%20example.png)
