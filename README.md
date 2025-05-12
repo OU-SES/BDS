@@ -78,3 +78,5 @@ Object[][] data = {
 ```
 
 4. Add Broker Object data into the place as much as you need for the test. Please check the longitude and latitude value of the broker, the BFSserver will send a broker with minimum distance with the client in default.
+If Broker Objects are added successfully, user will see the following screen.
+![Architecture Diagram](https://github.com/OU-SES/BDS/blob/main/running%20example.png)
