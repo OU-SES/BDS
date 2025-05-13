@@ -1,4 +1,4 @@
-# BFSserver
+# BDSserver
 
 Broker Domain Services (BDS) is a Spring Boot application designed to run as a backend server. This project is built using Maven and adheres to standard Spring Boot conventions. 
 
